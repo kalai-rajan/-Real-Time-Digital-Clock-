@@ -1,4 +1,4 @@
-module rtc_clock_div (input i_clk,rst, output  reg o_clk);
+ module rtc_clock_div (input i_clk,rst, output  reg o_clk);
 
 reg [31:0]count;
 
@@ -7,11 +7,11 @@ always @(posedge i_clk or posedge rst) begin
         count<=0;
         o_clk<=0;
     end
-    else if(count==32'd25_000_000) begin
-        o_clk<=1;
+    else if(count==32'd250) begin   //ACTUAL VALUE SHOULD BE 25_000_000 
+        o_clk<=1;                      //Value reduced for simulation purpose
         count<=count+1;
     end
-    else  if(count==32'd50_000_000) begin
+    else  if(count==32'd500) begin  //ACTUAL VALUE SHOULD BE 50_000_000 
         o_clk<=0;
         count<=0;
     end
