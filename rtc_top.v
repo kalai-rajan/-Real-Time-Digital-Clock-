@@ -7,7 +7,7 @@ wire n_clk;
 
 rtc_clock_div  dut1(.i_clk(clk), .rst(rst), .o_clk(n_clk)); 
 
-rtc_counters   dut2(.c_clk(n_clk), .c_rst(rst),  .h(h),.m(m), .s(s),  
+rtc_count   dut2(.c_clk(n_clk), .c_rst(rst),  .h(h),.m(m), .s(s),  
                      .hr_l(hl), .hr_m(hm), .mn_l(ml), .mn_m(mm), .se_l(sl), .se_m(sm) );  
 
 rtc_7seg  dut3(.bcd(hl), .seg(h_l));
@@ -31,6 +31,7 @@ rtc_top dut9 (.clk(CLK), .rst(RST), .h(H), .m(M), .s(S), .h_l(H_L), .h_m(H_M), .
 initial begin
      $monitor("(%0d)\t%0d%0d:\t%0d%0d:\t%0d%0d:\t",$time,dut9.hm,dut9.hl,dut9.mm,dut9.ml,dut9.sm,dut9.sl);
      CLK=0;RST=1;
+     H=0;M=0;S=0;
      #5RST=0;
 end
 
